@@ -117,12 +117,25 @@ class Menu:
                         name_only = saves[selected][1]
                         data = load_game(name_only)
                         if data:
-                            return Player(
+                            player = Player(
                                 name=data.get("name", "Hero"),
                                 gender=data.get("gender", "Male"),
                                 hair_style=data.get("hair_style", None),
                                 clothing_style=data.get("clothing_style", "Default")
                             )
+
+                            # Apply saved position (fallback to config center)
+                            player.x = data.get("x", CONFIG["screen_width"] // 2)
+                            player.y = data.get("y", CONFIG["screen_height"] // 2)
+
+                            # Track which save this player came from (useful for pause menu)
+                            player.save_name = name_only
+
+                            # If Player has an update_image or similar, refresh the composed sprite
+                            if hasattr(player, "update_image"):
+                                player.update_image()
+
+                            return player
                         else:
                             print(f"Failed to load save for {name_only}")
                     elif event.key == pygame.K_ESCAPE:

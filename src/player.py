@@ -4,13 +4,13 @@ from data import CONFIG  # absolute import
 import os
 
 class Player:
-    def __init__(self, name="", gender="Male", hair_style="Medium 01 - Page", clothing_style="Clothing1"):
+    def __init__(self, name="", gender="Male", hair_style="Medium 01 - Page", clothing_style="Clothing1", x=None, y=None, save_name=None):
         self.name = name
         self.gender = gender
         self.hair_style = hair_style
         self.clothing_style = clothing_style
-        self.x = CONFIG["screen_width"] // 2
-        self.y = CONFIG["screen_height"] // 2
+        self.x = x if x is not None else CONFIG["screen_width"] // 2
+        self.y = y if y is not None else CONFIG["screen_height"] // 2
         self.speed = CONFIG["player_speed"]
 
         # Load body

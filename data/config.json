@@ -1,6 +1,6 @@
 {
-  "screen_width": 800,
-  "screen_height": 600,
+  "screen_width": 1024,
+  "screen_height": 768,
   "player_speed": 2,
   "tile_size": 32,
   "fps": 60

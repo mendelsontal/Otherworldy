@@ -4,6 +4,7 @@ from .menu import Menu
 from .pause_menu import PauseMenu
 from data import CONFIG
 from .save_load import save_game, load_game
+from .maps.sydney import draw_map
 
 pygame.init()
 screen = pygame.display.set_mode((CONFIG["screen_width"], CONFIG["screen_height"]))
@@ -23,7 +24,6 @@ while menu_result in ("new", "load") and player is not None:
 
     while running:
         keys = pygame.key.get_pressed()
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -45,7 +45,8 @@ while menu_result in ("new", "load") and player is not None:
 
         player.handle_input(keys)
         screen.fill((0, 0, 0))
-        player.draw(screen)
+        draw_map(screen)
+        player.draw(screen)  # then draw player on top
         pygame.display.flip()
         clock.tick(60)
 
