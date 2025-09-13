@@ -3,6 +3,7 @@ import pygame
 import os
 from .player import Player
 from .character_preview import CharacterPreview
+from .intro import play_intro
 
 def run_character_creation(screen, font, screen_width, screen_height):
     """
@@ -98,14 +99,20 @@ def run_character_creation(screen, font, screen_width, screen_height):
                                 hair_style=hair_folders[hair_index],
                                 clothing_style="Default"
                             )
+                            intro = IntroScene(screen)
+                            intro.play()
+                            return player
                     else:
-                        if event.key == pygame.K_RETURN:
+                        if event.key == pygame.K_RE1TURN:
                             return Player(
                                 name=name or "Hero",
                                 gender=gender_options[gender_index],
                                 hair_style=None,
                                 clothing_style="Default"
                             )
+                            intro = IntroScene(screen)
+                            intro.play()
+                            return player
 
         clock.tick(60)
 

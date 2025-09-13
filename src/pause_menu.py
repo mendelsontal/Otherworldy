@@ -1,8 +1,9 @@
 import pygame
+from data import CONFIG
 from .save_load import save_game
 
 class PauseMenu:
-    def __init__(self, font, screen_width=800, screen_height=600):
+    def __init__(self, font, screen_width=CONFIG["screen_width"], screen_height=CONFIG["screen_height"]):
         self.font = font
         self.screen_width = screen_width
         self.screen_height = screen_height

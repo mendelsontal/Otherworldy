@@ -2,6 +2,7 @@
 import pygame
 import os
 from .character_creation import run_character_creation
+from .intro import play_intro
 from .save_load import save_game, load_game
 from .player import Player
 from data import CONFIG
@@ -73,6 +74,8 @@ class Menu:
                             return "quit", None
                         elif choice == "New Game":
                             player = run_character_creation(screen, self.font, self.screen_width, self.screen_height)
+                            if player:
+                                play_intro(screen)
                             return "new", player
                         elif choice == "Load Game":
                             player = self.load_game_menu(screen)
