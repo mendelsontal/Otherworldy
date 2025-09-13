@@ -23,6 +23,7 @@ def save_game(player):
         "y": player.y,
         "hair_style": getattr(player, "hair_style", "Hair1"),
         "clothing_style": getattr(player, "clothing_style", "Clothing1"),
+        "stats": player.stats
     }
     save_json(path, data)
     print(f"Game saved: {path}")

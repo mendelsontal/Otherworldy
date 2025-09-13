@@ -24,7 +24,7 @@ def get_saves():
     return saves
 
 class Menu:
-    def __init__(self, font, screen_width=800, screen_height=600):
+    def __init__(self, font, screen_width=CONFIG["screen_width"], screen_height=CONFIG["screen_height"]):
         self.font = font
         self.screen_width = screen_width
         self.screen_height = screen_height
@@ -35,8 +35,7 @@ class Menu:
         saves = get_saves()
         self.has_saves = bool(saves)
         self.options = ["New Game"]
-        if self.has_saves:
-            self.options.append("Load Game")
+        self.options.append("Load Game")
         self.options.append("Exit")
         self.selected = 0
 
@@ -121,7 +120,8 @@ class Menu:
                                 name=data.get("name", "Hero"),
                                 gender=data.get("gender", "Male"),
                                 hair_style=data.get("hair_style", None),
-                                clothing_style=data.get("clothing_style", "Default")
+                                clothing_style=data.get("clothing_style", "Default"),
+                                stats=data.get("stats") 
                             )
 
                             # Apply saved position (fallback to config center)
