@@ -45,13 +45,12 @@ while menu_result in ("new", "load") and player is not None:
 
         player.handle_input(keys)
         screen.fill((0, 0, 0))
-        draw_map(screen)
-        player.draw(screen)  # then draw player on top
+        draw_map(screen, player)
         pygame.display.flip()
         clock.tick(60)
 
     # After game ends, ask main menu again
-    menu_result, player = menu.loop(screen)
+    #menu_result, player = menu.loop(screen)
 
 
 pygame.quit()

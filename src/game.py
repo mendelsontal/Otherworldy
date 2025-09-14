@@ -1,5 +1,6 @@
 # src/game.py
 import pygame
+from .maps import sydney
 
 class GameLoop:
     def __init__(self, player):
@@ -14,10 +15,14 @@ class GameLoop:
                 if event.type == pygame.QUIT:
                     running = False
 
+            # Update player position / animation
             self.player.handle_input(keys)
 
-            screen.fill((50,50,50))
-            self.player.draw(screen)
+            # Draw the scrolling map + player
+            sydney.draw_map(screen, self.player)
+
+            # Refresh display
             pygame.display.flip()
             self.clock.tick(60)
+
         return "quit"
