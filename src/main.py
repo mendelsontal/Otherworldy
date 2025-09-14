@@ -46,6 +46,8 @@ while menu_result in ("new", "load") and player is not None:
                     if show_status:
                         # Close status window if open
                         show_status = False
+                    elif show_inventory:
+                        show_inventory = False
                     else:
                         # Open pause menu
                         result, player = pause_menu.loop(screen, player)
@@ -61,7 +63,7 @@ while menu_result in ("new", "load") and player is not None:
             break
 
         # Update player only if status window is closed
-        if not show_status:
+        if not show_status and not show_inventory:
             player.handle_input(keys)
 
         # Draw map and player
