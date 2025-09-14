@@ -37,6 +37,7 @@ class Menu:
         self.has_saves = bool(saves)
         self.options = ["New Game"]
         self.options.append("Load Game")
+        self.options.append("Options")
         self.options.append("Exit")
         self.selected = 0
 

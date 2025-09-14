@@ -103,7 +103,7 @@ def run_character_creation(screen, font, screen_width, screen_height):
                             intro.play()
                             return player
                     else:
-                        if event.key == pygame.K_RE1TURN:
+                        if event.key == pygame.K_RETURN:
                             return Player(
                                 name=name or "Hero",
                                 gender=gender_options[gender_index],
