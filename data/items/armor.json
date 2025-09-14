@@ -1,0 +1,10 @@
+{
+  "Low Grade Leather Armor": {
+    "name": "Low Quality Grade Leather Armor",
+    "description": "Provides minor protection",
+    "stat":"2",
+    "quality":"Low",
+    "image": "asset/images/",
+    "item_id": "armor_000001"
+  }
+}

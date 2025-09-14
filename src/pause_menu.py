@@ -7,7 +7,7 @@ class PauseMenu:
         self.font = font
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.options = ["Save Game", "Return to Main Menu"]
+        self.options = ["Save Game", "Main Menu"]
         self.selected = 0
 
     def loop(self, screen, player):
@@ -37,7 +37,7 @@ class PauseMenu:
                         if choice == "Save Game":
                             save_game(player)
                             return "resume", player
-                        elif choice == "Return to Main Menu":
+                        elif choice == "Main Menu":
                             return "menu", player
                     elif event.key == pygame.K_ESCAPE:
                         return "resume", player

@@ -1,0 +1,10 @@
+{
+  "Low Grade Leather Helm": {
+    "name": "Low Quality Grade Leather Helm",
+    "description": "Provides minor protection",
+    "stat":"1",
+    "quality":"Low",
+    "image": "asset/images/",
+    "item_id": "helm_00001"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Low Grade Leather Pants": {
+    "name": "Low Quality Grade Leather Pants",
+    "description": "Provides minor protection",
+    "stat":"1",
+    "quality":"Low",
+    "image": "asset/images/",
+    "item_id": "pants_00001"
+  }
+}

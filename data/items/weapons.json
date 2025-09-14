@@ -1,0 +1,10 @@
+{
+  "Nonstick Fry Pan": {
+    "name": "Nonstick Pan",
+    "description": "Ceramic Nonstick Fry Pan",
+    "stat":"1",
+    "quality":"Low",
+    "image": "asset/images/",
+    "item_id": "weapon_00001"
+  }
+}

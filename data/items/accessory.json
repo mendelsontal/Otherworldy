@@ -1,0 +1,11 @@
+{
+  "Low Grade Silver Ring": {
+    "name": "Low Grade Silver Ring",
+    "description": "Low Grade Sterling Silver Ring",
+    "stat":"1",
+    "quality":"Low",
+    "image": "asset/images/",
+    "item_id": "accessory_000001",
+    "acc_type": "ring"
+  }
+}

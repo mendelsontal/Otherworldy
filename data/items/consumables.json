@@ -1,0 +1,10 @@
+{
+  "consumable_000001": {
+    "name": "Low Healing Potion",
+    "description": "Restores 20 HP.",
+    "stat":"20",
+    "grade":"Low",
+    "image": "assets/images/items/consumables/potion.png",
+    "sell_price":"1"
+  }
+}

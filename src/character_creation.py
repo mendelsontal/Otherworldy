@@ -4,6 +4,7 @@ import os
 from .player import Player
 from .character_preview import CharacterPreview
 from .intro import play_intro
+from .save_load import save_game
 
 def run_character_creation(screen, font, screen_width, screen_height):
     """
@@ -93,26 +94,33 @@ def run_character_creation(screen, font, screen_width, screen_height):
                         elif event.key == pygame.K_RIGHT:
                             hair_index = (hair_index + 1) % len(hair_folders)
                         elif event.key == pygame.K_RETURN:
-                            return Player(
+                            player = Player(
                                 name=name or "Hero",
                                 gender=gender_options[gender_index],
                                 hair_style=hair_folders[hair_index],
                                 clothing_style="Default"
                             )
-                            intro = IntroScene(screen)
-                            intro.play()
+
+                            # Save game
+                            save_game(player)
+
+                            # Play intro
+                            play_intro(screen)
+                            
+                            # Finally return the player
                             return player
                     else:
                         if event.key == pygame.K_RETURN:
-                            return Player(
+                            player = Player(
                                 name=name or "Hero",
                                 gender=gender_options[gender_index],
                                 hair_style=None,
                                 clothing_style="Default"
                             )
-                            intro = IntroScene(screen)
-                            intro.play()
-                            return player
+                            save_game(player) # Save game
+                            play_intro(screen) # Play intro
+                            
+                            return player # Finally return the player
 
         clock.tick(60)
 
