@@ -14,6 +14,8 @@ class Player:
         self.x = x if x is not None else CONFIG["screen_width"] // 2
         self.y = y if y is not None else CONFIG["screen_height"] // 2
         self.speed = CONFIG["player_speed"]
+        self.inventory = []
+        self.equipment = {}
 
         # State
         self.direction = "down"
@@ -31,7 +33,7 @@ class Player:
         self.feet_frames   = self.load_spritesheet(f"assets/images/Characters/Clothing/{self.gender}/Feet/Shoes 01 - Shoes/Walk.png")
 
         # Character stats
-        self.stats = stats or {"STR":5,"DEX":5,"AGI":5,"VIT":5,"INT":5}
+        self.stats = stats or {"Title":"Human","STR":5,"DEX":5,"AGI":5,"VIT":5,"INT":5,"Gold":0,"HP":100,"MP":50}
 
         # Temporary image for blitting (composite)
         self.image = pygame.Surface((64, 64), pygame.SRCALPHA)
@@ -135,3 +137,31 @@ class Player:
 
         # Draw sprite with camera offset
         screen.blit(draw_image, (self.x + offset_x, self.y + offset_y))
+
+    def draw_status_window(screen, player, font):
+        # Get screen size
+        width, height = screen.get_size()
+        
+        # Semi-transparent background
+        overlay = pygame.Surface((width//2, height//2), pygame.SRCALPHA)
+        overlay.fill((30, 30, 30, 200))  # dark gray with alpha
+        screen.blit(overlay, (width//4, height//4))  # center on screen
+
+        # Draw border
+        pygame.draw.rect(screen, (200,200,200), (width//4, height//4, width//2, height//2), 3)
+
+        # Draw player stats
+        stats = player.stats
+        x = width//4 + 20
+        y = height//4 + 20
+        line_height = 30
+
+        title_surf = font.render(f"{player.name} Status", True, (255,255,255))
+        screen.blit(title_surf, (x, y))
+        y += line_height
+
+        for stat_name, stat_value in stats.items():
+            stat_text = f"{stat_name}: {stat_value}"
+            stat_surf = font.render(stat_text, True, (255,255,255))
+            screen.blit(stat_surf, (x, y))
+            y += line_height
