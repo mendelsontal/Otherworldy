@@ -142,8 +142,28 @@ class Player:
             draw_image = draw_image.copy()
             draw_image.blit(dark_overlay, (0,0), special_flags=pygame.BLEND_RGBA_MULT)
 
+        draw_x = ( self.x + offset_x )
+        draw_y = ( self.y + offset_y )
+        # Draw sprite
+        screen.blit(draw_image, (draw_x, draw_y))
+
         # Draw sprite with camera offset
         screen.blit(draw_image, (self.x + offset_x, self.y + offset_y))
+
+        # --- Draw name above character ---
+        if self.name:
+            font = pygame.font.Font(None, 25)  # small readable font
+            text_surf = font.render(self.name, True, (255, 255, 255))
+            text_rect = text_surf.get_rect(center=(draw_x + self.image.get_width()//2, draw_y - 10))
+            
+            # optional black outline for readability
+            outline = font.render(self.name, True, (0,0,0))
+            outline_rect = text_rect.copy()
+            for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:  # 4 directions
+                outline_rect.topleft = (text_rect.left + dx, text_rect.top + dy)
+                screen.blit(outline, outline_rect)
+
+            screen.blit(text_surf, text_rect)
 
     def draw_status_window(screen, player, font):
         # Get screen size
